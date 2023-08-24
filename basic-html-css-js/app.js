@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Hello World from console");
 // document.getElementById("t").innerHTML = "Welcome home!";
 //Variables and Data Types
@@ -58,6 +60,9 @@ function add(n1, n2) {
 var sum1 = add(2, 5);
 // const sum2 = add("Hello", 5); //TS Error
 console.log(sum1);
+// const f: Function = function (n1: number, n2: number): number {
+//   return n1 * n2;
+// };
 var f = function (n1, n2) {
     return n1 * n2;
 };
@@ -67,7 +72,17 @@ var average = function (n1, n2, fn) {
     var s = fn(n1, n2);
     return s / 2;
 };
-var avg = average(4, 8, function (a, b) {
-    return a + b;
-});
+var avg = average(4, 8, function (a, b) { return a + b; }); //Fat arrow syntax
 console.log(avg);
+//Inbuilt array methods
+var nums = [2, 6, 12, 4];
+// const doubles = [];
+// for (let i = 0; i < nums.length; i++) {
+//   doubles[i] = 2 * nums[i];
+// }
+// function doubleEachElement(e) {
+//   return e * 2;
+// }
+// const doubles = nums.map(doubleEachElement);
+var doubles = nums.map(function (n) { return n * 2; });
+console.log(doubles);

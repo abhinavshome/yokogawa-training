@@ -83,7 +83,10 @@ const sum1 = add(2, 5);
 // const sum2 = add("Hello", 5); //TS Error
 console.log(sum1);
 
-const f: Function = function (n1: number, n2: number): number {
+// const f: Function = function (n1: number, n2: number): number {
+//   return n1 * n2;
+// };
+const f: Function = (n1: number, n2: number): number => {
   return n1 * n2;
 };
 const prod = f(3, 8);
@@ -98,7 +101,24 @@ const average: Function = function (
   return s / 2;
 };
 
-const avg = average(4, 8, function (a, b) {
-  return a + b;
-});
+const avg = average(4, 8, (a, b) => a + b); //Fat arrow syntax
 console.log(avg);
+
+//Inbuilt array methods
+const nums = [2, 6, 12, 4];
+
+// const doubles = [];
+
+// for (let i = 0; i < nums.length; i++) {
+//   doubles[i] = 2 * nums[i];
+// }
+
+// function doubleEachElement(e) {
+//   return e * 2;
+// }
+
+// const doubles = nums.map(doubleEachElement);
+
+const doubles = nums.map((n) => n * 2);
+
+console.log(doubles);
