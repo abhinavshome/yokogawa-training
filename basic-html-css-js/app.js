@@ -38,3 +38,36 @@ var car2 = {
 };
 console.log(car2.model);
 console.log(car2.constructor);
+var pulsar = {
+    maxSpeed: 220,
+    powerInCC: 200,
+    isCostly: false,
+};
+var ktm = {
+    maxSpeed: 300,
+    powerInCC: 250,
+    isCostly: true,
+    isAutomatic: "NO",
+    stepney: 2,
+};
+console.log(ktm.stepney);
+// Functions in Typescript
+function add(n1, n2) {
+    return n1 + n2;
+}
+var sum1 = add(2, 5);
+// const sum2 = add("Hello", 5); //TS Error
+console.log(sum1);
+var f = function (n1, n2) {
+    return n1 * n2;
+};
+var prod = f(3, 8);
+console.log(prod);
+var average = function (n1, n2, fn) {
+    var s = fn(n1, n2);
+    return s / 2;
+};
+var avg = average(4, 8, function (a, b) {
+    return a + b;
+});
+console.log(avg);

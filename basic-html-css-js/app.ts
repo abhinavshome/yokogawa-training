@@ -41,6 +41,7 @@ car.start();
 console.log(car.constructor);
 
 // we can create objects directly, without a class
+
 let car2 = {
   model: "Honda",
   maxSpeed: 220,
@@ -48,3 +49,56 @@ let car2 = {
 
 console.log(car2.model);
 console.log(car2.constructor);
+
+type Bike = {
+  maxSpeed: number;
+  powerInCC: number;
+  isCostly: boolean;
+  isAutomatic?: "YES" | "NO";
+  stepney?: any;
+};
+
+const pulsar: Bike = {
+  maxSpeed: 220,
+  powerInCC: 200,
+  isCostly: false,
+};
+
+const ktm: Bike = {
+  maxSpeed: 300,
+  powerInCC: 250,
+  isCostly: true,
+  isAutomatic: "NO",
+  stepney: 2,
+};
+
+console.log(ktm.stepney);
+
+// Functions in Typescript
+function add(n1: number, n2: number): number {
+  return n1 + n2;
+}
+
+const sum1 = add(2, 5);
+// const sum2 = add("Hello", 5); //TS Error
+console.log(sum1);
+
+const f: Function = function (n1: number, n2: number): number {
+  return n1 * n2;
+};
+const prod = f(3, 8);
+console.log(prod);
+
+const average: Function = function (
+  n1: number,
+  n2: number,
+  fn: Function
+): number {
+  const s = fn(n1, n2);
+  return s / 2;
+};
+
+const avg = average(4, 8, function (a, b) {
+  return a + b;
+});
+console.log(avg);
