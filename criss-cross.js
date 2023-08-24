@@ -1,5 +1,7 @@
 const data = ['x', 'o', 'o', '', '', '', 'x', '', ''];
 
+
+
 function display() {
     let html = '';
 
