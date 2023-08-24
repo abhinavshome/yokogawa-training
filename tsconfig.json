@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "out"
   }
 }
