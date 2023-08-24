@@ -9,7 +9,10 @@ function OnOffSwitch() {
 
   return (
     <div>
-      <div className={switchState ? "green-light" : "red-light"}></div>
+      <div
+        className="light"
+        style={{ backgroundColor: switchState ? "green" : "red" }}
+      ></div>
       <button onClick={switchOn}>ON</button>
       <button onClick={switchOff}>OFF</button>
     </div>

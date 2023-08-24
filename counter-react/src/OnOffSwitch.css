@@ -1,12 +1,4 @@
-.green-light {
-  background-color: green;
-  width: 50px;
-  height: 50px;
-  border-radius: 28px;
-}
-
-.red-light {
-  background-color: red;
+.light {
   width: 50px;
   height: 50px;
   border-radius: 28px;
