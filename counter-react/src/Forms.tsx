@@ -2,8 +2,10 @@ import { useState } from "react";
 
 function Forms() {
   const [username, setUsername] = useState("Abhinav");
-  const [city, setCity] = useState("Banglore");
+  const [city, setCity] = useState("Bangalore");
   const [isAdmin, setIsAdmin] = useState(true);
+
+  const cities = ["Mumbai", "Delhi", "Chennai", "Bangalore"];
 
   return (
     <div>
@@ -23,10 +25,9 @@ function Forms() {
       />
       <br />
       <select value={city} onChange={(e) => setCity(e.target.value)}>
-        <option>Chennai</option>
-        <option>Banglore</option>
-        <option>Delhi</option>
-        <option>Mumbai</option>
+        {cities.map((city) => (
+          <option key={city}>{city}</option>
+        ))}
       </select>
     </div>
   );
