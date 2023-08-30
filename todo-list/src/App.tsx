@@ -5,14 +5,14 @@ import todosFromBE from "./data/todos.json";
 function App() {
   const [todos, setTodos] = useState(todosFromBE);
 
-  const toggleTodo = (todoId: number) => {
+  function toggleTodo(todoId: number) {
     const newTodos = [...todos];
     const todoToChange = newTodos.find((todo) => todo.id === todoId);
     if (todoToChange) {
       todoToChange.done = !todoToChange.done;
     }
     setTodos(newTodos);
-  };
+  }
 
   return (
     <>
