@@ -28,3 +28,5 @@ function display() {
     console.log('called')
     document.getElementById('count').innerHTML = store.getState();
 }
+
+display()
