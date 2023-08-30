@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "label": "Bring Milk",
+    "done": false
+  },
+  {
+    "id": 2,
+    "label": "Clean House",
+    "done": true
+  },
+  {
+    "id": 3,
+    "label": "Pay mobile bill",
+    "done": true
+  }
+]
