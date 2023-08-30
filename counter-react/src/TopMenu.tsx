@@ -22,6 +22,7 @@ function TopMenu(props: TopMenuProps) {
         <a
           onClick={() => handleItemClick(item)}
           style={{ backgroundColor: selectedItem === item ? "red" : "gray" }}
+          key={item}
         >
           {item}
         </a>
