@@ -1,18 +1,14 @@
-// import Todo from "../types/Todo";
+import Todo from "../types/Todo";
+import TodoItem from "./TodoItem";
 
-interface Todo {
-  id: number;
-  label: string;
-  done: boolean;
-}
-
-interface TodoListProps {
+type TodoListProps = {
   todos: Todo[];
-}
+  onToggle: (todoId: number) => void;
+};
 
 function TodoList(props: TodoListProps) {
   const listOfTodos: Todo[] = props.todos;
-
+  const onToggle = props.onToggle;
   //   Todo[] listOfTodos = props.todos
   return (
     <table>
@@ -20,16 +16,13 @@ function TodoList(props: TodoListProps) {
         <tr>
           <th>ID</th>
           <th>Label</th>
-          <th>Done?</th>
+          <th>Done</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {listOfTodos.map((todo) => (
-          <tr key={todo.id}>
-            <td>{todo.id}</td>
-            <td>{todo.label}</td>
-            <td>{todo.done ? "DONE" : "NOT DONE"}</td>
-          </tr>
+          <TodoItem todo={todo} key={todo.id} onToggle={onToggle} />
         ))}
       </tbody>
     </table>
