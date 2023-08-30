@@ -4,6 +4,7 @@ import Calc from "./Calc";
 import Counter from "./Counter";
 import OnOffSwitch from "./OnOffSwitch";
 import Simple from "./SImple";
+import Toggle from "./Toggle";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Simple />
       <OnOffSwitch />
       <Calc />
+      <Toggle />
     </div>
   );
   // return React.createElement("h2", {class: 'bold'}, "Todo List");
