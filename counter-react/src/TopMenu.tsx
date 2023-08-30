@@ -1,7 +1,14 @@
 import { useState } from "react";
 
-function TopMenu() {
-  const items = ["Home", "About", "Contact", "Careers", "Support"];
+type TopMenuProps = {
+  items: string[];
+  title: string;
+};
+
+function TopMenu(props: TopMenuProps) {
+  const items = props.items;
+  const title = props.title;
+
   const [selectedItem, setSelectedItem] = useState("");
 
   function handleItemClick(key: string) {
@@ -10,6 +17,7 @@ function TopMenu() {
 
   return (
     <div className="top-menu">
+      <h5>{title}</h5>
       {items.map((item) => (
         <a
           onClick={() => handleItemClick(item)}

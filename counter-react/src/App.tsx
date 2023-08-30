@@ -8,6 +8,7 @@ import Toggle from "./Toggle";
 import TopMenu from "./TopMenu";
 
 function App() {
+  const menuItems = ["Home", "About", "Contact", "Careers", "Support"];
   return (
     <div>
       <Counter />
@@ -16,7 +17,7 @@ function App() {
       <Calc />
       <Toggle />
       <hr />
-      <TopMenu />
+      <TopMenu items={menuItems} title="Any Title" />
     </div>
   );
   // return React.createElement("h2", {class: 'bold'}, "Todo List");
