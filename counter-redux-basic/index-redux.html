@@ -15,8 +15,18 @@
     <br />
     <input type="number" id="by" />
     <button onclick="dispatch({type: 'INCREMENT_BY', payload: +document.getElementById('by').value})">+ by</button>
+
     <hr />
+
     <h2>On Off Switch</h2>
+    <div id="switch"></div>
+    <button onclick="dispatch({type: 'SWITCH_ON'})">ON</button>
+    <button onclick="dispatch({type: 'SWITCH_OFF'})">OFF</button>
+
+
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.1/redux.js"
         integrity="sha512-Olr8rkMYuxq3KpAPjYA/mAVYe7EIEP4RkhoAvD/qOrlauzE4CTvpQSg/cRX0/5Qreret4aobD0vg1xtjBqR7VA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

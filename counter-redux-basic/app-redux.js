@@ -1,4 +1,4 @@
-function reducer(state = 0, action) {
+function counterReducer(state = 0, action) {
     switch (action.type) {
         case "INCREMENT":
             return state + 1;
@@ -10,6 +10,22 @@ function reducer(state = 0, action) {
             return state;
     }
 }
+
+function switchReducer(state = 'ON', action) {
+    switch (action.type) {
+        case 'SWITCH_ON':
+            return 'ON';
+        case 'SWITCH_OFF':
+            return 'OFF';
+        default:
+            return state;
+    }
+}
+
+const reducer = Redux.combineReducers({
+    count: counterReducer,
+    onOffSwitch: switchReducer
+})
 
 // function dispatch(action) {
 //     console.log('---------');
@@ -25,8 +41,11 @@ const dispatch = store.dispatch;
 store.subscribe(display);
 
 function display() {
-    console.log('called')
-    document.getElementById('count').innerHTML = store.getState();
+    console.log('called');
+    const state = store.getState();
+    console.log(state);
+    document.getElementById('count').innerHTML = state.count;
+    document.getElementById('switch').innerHTML = state.onOffSwitch;
 }
 
 display()
