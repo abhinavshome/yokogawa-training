@@ -5,6 +5,7 @@ import Counter from "./Counter";
 import OnOffSwitch from "./OnOffSwitch";
 import Simple from "./SImple";
 import Toggle from "./Toggle";
+import TopMenu from "./TopMenu";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <OnOffSwitch />
       <Calc />
       <Toggle />
+      <hr />
+      <TopMenu />
     </div>
   );
   // return React.createElement("h2", {class: 'bold'}, "Todo List");
