@@ -2,6 +2,7 @@
 import "./App.css";
 import Calc from "./Calc";
 import Counter from "./Counter";
+import Forms from "./Forms";
 import OnOffSwitch from "./OnOffSwitch";
 import Simple from "./SImple";
 import Toggle from "./Toggle";
@@ -18,6 +19,8 @@ function App() {
       <Toggle />
       <hr />
       <TopMenu items={menuItems} title="Any Title" />
+      <hr />
+      <Forms />
     </div>
   );
   // return React.createElement("h2", {class: 'bold'}, "Todo List");
