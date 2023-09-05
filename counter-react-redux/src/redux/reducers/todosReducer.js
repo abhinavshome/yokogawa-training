@@ -1,3 +1,5 @@
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from "../actions/todosActions";
+
 const INITIAL_STATE = [
     { id: 1, label: "Bring Milk", done: false },
     { id: 2, label: "CLean house", done: false },
@@ -5,9 +7,11 @@ const INITIAL_STATE = [
 
 function todosReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case "ADD_TODO": {
+        case ADD_TODO: {
+            const ids = state.map(todo => todo.id);
             const newTodo = {
-                id: state.length + 1,
+                // id: Date.now(),
+                id: Math.max(...ids) + 1,
                 label: action.data,
                 done: false
             };
@@ -23,8 +27,17 @@ function todosReducer(state = INITIAL_STATE, action) {
             // Option 3
             return [newTodo, ...state]
         }
-        case "REMOVE_TODO": {
-            return state;
+        case REMOVE_TODO: {
+            return state.filter(todo => todo.id !== action.data);
+        }
+        case TOGGLE_TODO: {
+            return state.map(todo => {
+                if (todo.id === action.data) {
+                    return { ...todo, done: !todo.done }
+                } else {
+                    return todo
+                }
+            });
         }
         default:
             return state;
