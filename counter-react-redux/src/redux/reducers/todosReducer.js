@@ -6,14 +6,22 @@ const INITIAL_STATE = [
 function todosReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case "ADD_TODO": {
-            const newTodos = [...state];
             const newTodo = {
                 id: state.length + 1,
                 label: action.data,
                 done: false
             };
-            newTodos.push(newTodo);
-            return newTodos;
+
+            // Option 1
+            // const newTodos = [...state];
+            // newTodos.push(newTodo);
+            // return newTodos;
+
+            // Option 2
+            // return state.concat(newTodo)
+
+            // Option 3
+            return [newTodo, ...state]
         }
         case "REMOVE_TODO": {
             return state;
@@ -21,10 +29,10 @@ function todosReducer(state = INITIAL_STATE, action) {
         default:
             return state;
     }
-};
+}
 
 export function todosSelector(state) {
     return state.todos
-};
+}
 
 export default todosReducer;
