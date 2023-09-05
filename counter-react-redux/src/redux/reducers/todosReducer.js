@@ -1,3 +1,5 @@
+import { produce } from "immer"
+
 import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from "../actions/todosActions";
 
 const INITIAL_STATE = {
@@ -8,45 +10,34 @@ const INITIAL_STATE = {
     total: 2
 }
 
-function todosReducer(state = INITIAL_STATE, action) {
-    switch (action.type) {
-        case ADD_TODO: {
-            const ids = state.items.map(todo => todo.id);
-            const newTodo = {
-                // id: Date.now(),
-                id: Math.max(...ids) + 1,
-                label: action.data,
-                done: false
-            };
-
-            // Option 1
-            const newTodos = [...state.items];
-            newTodos.push(newTodo);
-            return { ...state, items: newTodos, total: newTodos.length };
-
-            // Option 2
-            // return state.concat(newTodo)
-
-            // Option 3
-            // return [newTodo, ...state]
+function todosReducer(prevState = INITIAL_STATE, action) {
+    return produce(prevState, function (state) {
+        switch (action.type) {
+            case ADD_TODO: {
+                const ids = state.items.map(todo => todo.id);
+                const newTodo = {
+                    // id: Date.now(),
+                    id: Math.max(...ids) + 1,
+                    label: action.data,
+                    done: false
+                };
+                state.items.push(newTodo);
+                break;
+            }
+            case REMOVE_TODO: {
+                const indexToRemove = state.items.findIndex(item => item.id === action.data);
+                state.items.splice(indexToRemove, 1)
+                break;
+            }
+            case TOGGLE_TODO: {
+                const itemToToggle = state.items.find(item => item.id === action.data);
+                itemToToggle.done = !itemToToggle.done;
+                break;
+            }
+            default:
+                break;
         }
-        case REMOVE_TODO: {
-            const newTodos = state.items.filter(todo => todo.id !== action.data);
-            return { ...state, items: newTodos }
-        }
-        case TOGGLE_TODO: {
-            const newTodos = state.items.map(todo => {
-                if (todo.id === action.data) {
-                    return { ...todo, done: !todo.done }
-                } else {
-                    return todo
-                }
-            });
-            return { ...state, items: newTodos }
-        }
-        default:
-            return state;
-    }
+    });
 }
 
 export function todoListSelector(state) {
