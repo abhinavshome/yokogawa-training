@@ -31,16 +31,18 @@ function todosReducer(state = INITIAL_STATE, action) {
             // return [newTodo, ...state]
         }
         case REMOVE_TODO: {
-            return state.filter(todo => todo.id !== action.data);
+            const newTodos = state.items.filter(todo => todo.id !== action.data);
+            return { ...state, items: newTodos }
         }
         case TOGGLE_TODO: {
-            return state.map(todo => {
+            const newTodos = state.items.map(todo => {
                 if (todo.id === action.data) {
                     return { ...todo, done: !todo.done }
                 } else {
                     return todo
                 }
             });
+            return { ...state, items: newTodos }
         }
         default:
             return state;
