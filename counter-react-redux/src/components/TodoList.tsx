@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   todoListSelector,
-  todosSelector,
   totalTodosSelector,
 } from "../redux/reducers/todosReducer";
 import { useRef } from "react";
