@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { todosSelector } from "../redux/reducers/todosReducer";
+import {
+  todoListSelector,
+  todosSelector,
+  totalTodosSelector,
+} from "../redux/reducers/todosReducer";
 import { useRef } from "react";
 import { addTodo, removeTodo, toggleTodo } from "../redux/actions/todosActions";
 
@@ -11,7 +15,8 @@ type Todo = {
 
 function TodoList() {
   const dispatch = useDispatch();
-  const todos = useSelector(todosSelector);
+  const todos = useSelector(todoListSelector);
+  const total = useSelector(totalTodosSelector);
   const labelRef = useRef<HTMLInputElement | null>(null);
 
   const handleAddBtnClick = () => {
@@ -29,6 +34,7 @@ function TodoList() {
     <div>
       <input type="text" ref={labelRef} />
       <button onClick={handleAddBtnClick}>Add</button>
+      <div>Total: {total}</div>
       <table>
         <thead>
           <tr>
