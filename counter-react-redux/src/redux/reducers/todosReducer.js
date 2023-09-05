@@ -8,7 +8,7 @@ const INITIAL_STATE = {
         { id: 2, label: "CLean house", done: false },
     ],
     total: 2
-}
+};
 
 function todosReducer(prevState = INITIAL_STATE, action) {
     return produce(prevState, function (state) {
