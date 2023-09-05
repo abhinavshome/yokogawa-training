@@ -1,0 +1,17 @@
+.columns {
+    display: flex;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.selected {
+    background-color: red;
+    color: white;
+}
+
+.contact-item {
+    cursor: pointer;
+    padding: 5px;
+}
