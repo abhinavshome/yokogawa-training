@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import { playerSelector } from "../redux/reducers/playerReducer";
 import { useEffect } from "react";
 import { loadPlayers } from "../redux/actions/playerActions";
+import Config from "../config";
 
 type Player = {
   id?: number;
@@ -13,15 +15,17 @@ function Listing() {
   const players = useSelector(playerSelector);
   const dispatch = useDispatch();
 
-  useEffect(function () {
-    async function fetchPlayers() {
-      const res = await fetch("http://localhost:3000/players");
-      const data = await res.json();
-      dispatch(loadPlayers(data));
-    }
+  useEffect(
+    function () {
+      async function fetchPlayers() {
+        const res = await axios.get(Config.apiUrl);
+        dispatch(loadPlayers(res.data));
+      }
 
-    fetchPlayers();
-  }, []);
+      fetchPlayers();
+    },
+    [dispatch]
+  );
   return (
     <div>
       <div className="title">All Players</div>
