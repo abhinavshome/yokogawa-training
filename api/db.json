@@ -17,18 +17,48 @@
     },
     {
       "name": "Yuvraj Singh",
-      "age": "36",
+      "age": 36,
       "id": 5
     },
     {
       "name": "Debashish Mohanty",
-      "age": "23",
+      "age": 23,
       "id": 6
     },
     {
       "name": "Monoj Prabhakar",
-      "age": "54",
+      "age": 54,
       "id": 7
+    },
+    {
+      "name": "Ramesh Kularni",
+      "age": 18,
+      "id": 8
+    },
+    {
+      "name": "Suresh Jha",
+      "age": 17,
+      "id": 9
+    },
+    {
+      "name": "Don Bradman",
+      "age": 57,
+      "id": 10
+    },
+    {
+      "name": "Brian Lara",
+      "age": 58,
+      "id": 11
+    },
+    {
+      "name": "Irfan Pathan",
+      "age": 55,
+      "id": 12
+    },
+    {
+      "name": "Yusuf Pathan",
+      "age": 57,
+      "id": 13
     }
   ],
   "departments": [

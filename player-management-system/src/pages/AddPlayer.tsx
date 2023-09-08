@@ -2,15 +2,17 @@ import axios from "axios";
 import { useRef } from "react";
 import Config from "../config";
 import { useNavigate } from "react-router-dom";
+import { Player } from "../types";
 
 function AddPlayer() {
-  const playerForm = useRef(null);
+  const playerForm = useRef<HTMLFormElement | undefined>(undefined);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(playerForm.current);
-    const newPlayer = Object.fromEntries(data.entries());
+    const newPlayer: Player = Object.fromEntries(data.entries());
+    newPlayer.age = parseInt(newPlayer.age);
     await axios.post(Config.apiUrl, newPlayer);
     navigate("/listing");
   };

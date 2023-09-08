@@ -1,18 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { playerSelector } from "../redux/reducers/playerReducer";
+import { Player } from "../types";
+import axios from "axios";
 import { useEffect } from "react";
-import { loadPlayers } from "../redux/actions/playerActions";
 import Config from "../config";
-
-type Player = {
-  id?: number;
-  name: string;
-  age: number;
-};
+import { loadPlayers } from "../redux/actions/playerActions";
 
 function Listing() {
   const players = useSelector(playerSelector);
+
   const dispatch = useDispatch();
 
   useEffect(
@@ -26,6 +22,7 @@ function Listing() {
     },
     [dispatch]
   );
+
   return (
     <div>
       <div className="title">All Players</div>

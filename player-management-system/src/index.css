@@ -38,3 +38,7 @@ body {
 .bold {
   font-weight: bold;
 }
+
+.chart {
+  width: 300px;
+}
