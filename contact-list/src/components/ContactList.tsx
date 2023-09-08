@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   contactListSelector,
-  selectContact,
-  selectedContactSelector,
-} from "../redux/slices/contactListSlice";
+  selectedUserSelector,
+} from "../redux/reducers/contactListReducer";
+import { selectContact } from "../redux/actions/contactListActions";
 
 function ContactList() {
+  const users = useSelector(contactListSelector);
+  const selectedUser = useSelector(selectedUserSelector);
+
   const dispatch = useDispatch();
-  const contactList = useSelector(contactListSelector);
-  const selectedContact = useSelector(selectedContactSelector);
 
   return (
     <>
@@ -16,28 +17,30 @@ function ContactList() {
       <div className="columns">
         <div>
           <div className="bold">Users</div>
-          {contactList.map((user: any) => (
+          {users.map((user: any) => (
             <div
               key={user.id}
               onClick={() => dispatch(selectContact(user.id))}
-              className={
-                selectedContact && user.id === selectedContact.id
-                  ? "contact-item selected"
-                  : "contact-item"
-              }
+              className={selectedUser?.id === user.id ? "selected" : ""}
             >
               {user.name}
             </div>
           ))}
         </div>
-        {selectedContact && (
-          <div>
-            <div className="bold">Details</div>
-            <div>{selectedContact.name}</div>
-            <div>{selectedContact.city}</div>
-            <div>{selectedContact.phone}</div>
-          </div>
-        )}
+
+        <div>
+          <div className="bold">Details</div>
+          {selectedUser ? (
+            <div>
+              <div className="bold">Details</div>
+              <div>{selectedUser.name}</div>
+              <div>{selectedUser.city}</div>
+              <div>{selectedUser.phone}</div>
+            </div>
+          ) : (
+            <div>No user selected</div>
+          )}
+        </div>
       </div>
     </>
   );

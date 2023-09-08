@@ -1,11 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { contactListReducer } from './slices/contactListSlice'
-import logger from './middlewares/logger'
+import logger from "./middlewares/logger";
+import reducers from "./reducers";
+import { applyMiddleware, legacy_createStore as createStore } from 'redux'
 
+function makeStore() {
+    const store = createStore(reducers, applyMiddleware(logger))
+    return store
+}
 
-export const store = configureStore({
-    reducer: {
-        contacts: contactListReducer
-    },
-    middleware: [logger]
-})
+export default makeStore;

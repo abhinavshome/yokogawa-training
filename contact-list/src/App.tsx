@@ -1,6 +1,9 @@
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+
 import ContactList from "./components/ContactList";
+import makeStore from "./redux/store";
+
+const store = makeStore();
 
 function App() {
   return (
