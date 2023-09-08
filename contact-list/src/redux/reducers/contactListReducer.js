@@ -33,3 +33,5 @@ export function selectedUserSelector(state) {
 }
 
 export default contactListReducer
+
+

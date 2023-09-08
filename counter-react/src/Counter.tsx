@@ -1,5 +1,5 @@
 // import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Counter.css";
 
 function Counter() {
@@ -11,6 +11,13 @@ function Counter() {
 
   //   const increase = () => setCount(count + 1);
   //   const decrease = () => setCount(count - 1);
+
+  useEffect(
+    function () {
+      console.log("count changed", count);
+    },
+    [count]
+  );
 
   return (
     <div>

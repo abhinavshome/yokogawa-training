@@ -32,7 +32,6 @@ function ContactList() {
           <div className="bold">Details</div>
           {selectedUser ? (
             <div>
-              <div className="bold">Details</div>
               <div>{selectedUser.name}</div>
               <div>{selectedUser.city}</div>
               <div>{selectedUser.phone}</div>

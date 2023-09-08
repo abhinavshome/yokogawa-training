@@ -1,0 +1,29 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Rahul Dravid",
+      "age": 43
+    },
+    {
+      "id": 3,
+      "name": "Saurav Ganguly",
+      "age": 54
+    },
+    {
+      "name": "Virender Sehwag",
+      "age": 33,
+      "id": 4
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "name": "Batting"
+    },
+    {
+      "id": 2,
+      "name": "Bowling"
+    }
+  ]
+}
