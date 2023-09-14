@@ -42,3 +42,13 @@ body {
 .chart {
   width: 300px;
 }
+
+.link {
+  color: blue;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.active {
+  color: red;
+}

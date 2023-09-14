@@ -1,8 +1,12 @@
 import { produce } from "immer"
-import { LOAD_PLAYERS } from "../actions/playerActions";
+import { LOAD_PLAYERS, LOAD_TOTAL_COUNT } from "../actions/playerActions";
+import { SET_CURRENT_PAGE } from "../actions/counterActions";
 
 const INITIAL_STATE = {
-    list: []
+    list: [],
+    paginatedList: [],
+    totalCount: 0,
+    currentPage: 1
 }
 
 function playerReducer(state = INITIAL_STATE, action) {
@@ -10,6 +14,14 @@ function playerReducer(state = INITIAL_STATE, action) {
         switch (action.type) {
             case LOAD_PLAYERS: {
                 draft.list = action.data;
+                break;
+            }
+            case LOAD_TOTAL_COUNT: {
+                draft.totalCount = action.data;
+                break;
+            }
+            case SET_CURRENT_PAGE: {
+                draft.currentPage = action.data;
                 break;
             }
             default:
@@ -69,6 +81,17 @@ export function playerReportSelector(state) {
     return groups.map(
         (g) => ({ group: g, players: players.filter((p) => Math.floor(p.age / 10) * 10 == g) })
     );
+}
+
+export function pagesSelector(state) {
+    const count = state.players.totalCount;
+    const numOfPages = Math.ceil(count / 10)
+    const pages = new Array(numOfPages).fill(0).map((a, i) => i + 1);
+    return pages
+}
+
+export function currentPageSelector(state) {
+    return state.players.currentPage;
 }
 
 export default playerReducer
