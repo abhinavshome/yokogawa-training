@@ -25,6 +25,7 @@ function AppLayout() {
             <a
               onClick={() => {
                 dispatch(logout());
+                localStorage.removeItem("user");
                 navigate("/login");
               }}
             >
