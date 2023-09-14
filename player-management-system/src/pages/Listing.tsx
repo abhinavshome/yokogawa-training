@@ -20,16 +20,6 @@ function Listing() {
 
   useEffect(
     function () {
-      // async function fetchPlayers() {
-      //   const res = await axios.get(Config.apiUrl + "?_page=1");
-      //   console.log(res.headers);
-      //   const count = parseInt(res.headers["x-total-count"]);
-      //   dispatch(loadTotalCount(count));
-      //   dispatch(loadPlayers(res.data));
-      // }
-
-      // dispatch(setCurrentPage(1));
-
       loadPage(currentPage);
     },
     [currentPage]
@@ -57,6 +47,24 @@ function Listing() {
         </div>
       ))}
       <div>
+        {/* <a
+          onClick={() =>
+            dispatch(setCurrentPage(currentPage === 1 ? 1 : currentPage - 1))
+          }
+          className="link"
+        >
+          prev
+        </a> */}
+        {currentPage > 1 ? (
+          <a
+            onClick={() => dispatch(setCurrentPage(currentPage - 1))}
+            className="link"
+          >
+            prev
+          </a>
+        ) : (
+          <span>prev</span>
+        )}
         {pages.map((page) => (
           <a
             key={page}
@@ -66,6 +74,16 @@ function Listing() {
             {page}
           </a>
         ))}
+        {currentPage < pages.length ? (
+          <a
+            onClick={() => dispatch(setCurrentPage(currentPage + 1))}
+            className="link"
+          >
+            next
+          </a>
+        ) : (
+          <span>next</span>
+        )}
       </div>
     </div>
   );
