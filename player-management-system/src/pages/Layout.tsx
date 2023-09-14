@@ -1,12 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { authSelector } from "../redux/reducers/authReducer";
-import { logout } from "../redux/actions/authActions";
+import { logout, setCurrentUserAndToken } from "../redux/actions/authActions";
+import { useEffect } from "react";
 
 function AppLayout() {
   const auth = useSelector(authSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData) {
+      dispatch(setCurrentUserAndToken(userData));
+    }
+  }, []);
 
   return (
     <div className="flex">

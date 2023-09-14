@@ -21,6 +21,7 @@ function Login() {
       const res = await axios.post(Config.loginUrl, credentials);
       console.log(res);
       dispatch(setCurrentUserAndToken(res.data));
+      localStorage.setItem("user", JSON.stringify(res.data));
       navigate("/");
     } catch (err) {
       console.log(err);
