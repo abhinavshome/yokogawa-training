@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import Config from "../config";
 import { loadPlayers, loadTotalCount } from "../redux/actions/playerActions";
-import { setCurrentPage } from "../redux/actions/counterActions";
+import { setCurrentPage } from "../redux/actions/playerActions";
 
 function Listing() {
   const players = useSelector(playerSelector);
