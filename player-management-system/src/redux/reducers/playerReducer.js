@@ -1,6 +1,6 @@
 import { produce } from "immer"
-import { LOAD_PLAYERS, LOAD_TOTAL_COUNT } from "../actions/playerActions";
-import { SET_CURRENT_PAGE } from "../actions/counterActions";
+import { SET_CURRENT_PAGE, LOAD_PLAYERS, LOAD_TOTAL_COUNT } from "../actions/playerActions";
+
 
 const INITIAL_STATE = {
     list: [],

@@ -49,6 +49,9 @@ function Listing() {
       {players.map((player: Player) => (
         <div key={player.id}>
           <hr />
+          <div>
+            <img src={player.picture} height={30} width={30} />
+          </div>
           <div className="bold">{player.name}</div>
           <div>{player.age}</div>
         </div>
