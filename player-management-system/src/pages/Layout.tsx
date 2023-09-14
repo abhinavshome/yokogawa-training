@@ -1,9 +1,31 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { authSelector } from "../redux/reducers/authReducer";
+import { logout } from "../redux/actions/authActions";
 
 function AppLayout() {
+  const auth = useSelector(authSelector);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <div className="flex">
       <div className="menu">
+        {auth.loggedIn ? (
+          <div>
+            Welcome {auth.currentUser.email}
+            <a
+              onClick={() => {
+                dispatch(logout());
+                navigate("/login");
+              }}
+            >
+              Log out
+            </a>
+          </div>
+        ) : (
+          <NavLink to="/login">Log in</NavLink>
+        )}
         <NavLink to="/">Dashboard</NavLink>
         <NavLink to="/listing">Listing</NavLink>
         <NavLink to="/add-player">Add Player</NavLink>

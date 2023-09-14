@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import makeStore from "./redux/store";
 import AddPlayer from "./pages/AddPlayer";
 import AppLayout from "./pages/Layout";
+import Login from "./pages/Login";
 
 function App() {
   const store = makeStore();
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="login" element={<Login />} />
             <Route path="listing" element={<Listing />} />
             <Route path="add-player" element={<AddPlayer />} />
             <Route path="about" element={<AboutPage />} />

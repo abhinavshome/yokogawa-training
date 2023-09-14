@@ -2,10 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import Config from "../config";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { authSelector } from "../redux/reducers/authReducer";
 
 function AddPlayer() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
+  const auth = useSelector(authSelector);
 
   const navigate = useNavigate();
 
@@ -15,7 +18,10 @@ function AddPlayer() {
       name: name,
       age: age,
     };
-    await axios.post(Config.apiUrl, newPlayer);
+
+    await axios.post(Config.addPlayerUrl, newPlayer, {
+      headers: { Authorization: "Bearer " + auth.token },
+    });
     navigate("/listing");
   };
 

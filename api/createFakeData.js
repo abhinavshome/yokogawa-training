@@ -19,5 +19,10 @@ const generatePersonsData = (number) => {
 };
 fs.writeFileSync(
     "./db.json",
-    JSON.stringify({ players: generatePersonsData(54) })
+    JSON.stringify(
+        {
+            players: generatePersonsData(54),
+            users: []
+        }
+    )
 );

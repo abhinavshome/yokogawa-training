@@ -26,7 +26,7 @@ function Listing() {
   );
 
   const loadPage = async (page) => {
-    const res = await axios.get(Config.apiUrl + "?_page=" + page);
+    const res = await axios.get(Config.getPlayersUrl + "?_page=" + page);
     console.log(res.headers);
     const count = parseInt(res.headers["x-total-count"]);
     dispatch(loadTotalCount(count));

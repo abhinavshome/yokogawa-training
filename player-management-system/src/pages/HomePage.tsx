@@ -12,7 +12,7 @@ function HomePage() {
   useEffect(
     function () {
       async function fetchPlayers() {
-        const res = await axios.get(Config.apiUrl);
+        const res = await axios.get(Config.getPlayersUrl);
         dispatch(loadPlayers(res.data));
       }
 
